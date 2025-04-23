@@ -14,6 +14,14 @@ class ProductProperties {
     toString() {
         return "Product: " + this.name + ", Price: " + this.price + ", Quantity: " + this.quantity;
     }
+
+    // Part 3
+    
+    static applyDiscount(products, discount) {
+        products.forEach(product => {
+            product.price *= (1 - discount / 100);
+        });
+    }
 }
 
 // Part 2
@@ -31,3 +39,4 @@ class PerishableProductProperties extends ProductProperties {
 
 let apple = new PerishableProductProperties("Apple", 4.99, 2, "2025-04-22");
 let banana = new PerishableProductProperties("Banana", 8.49, 8, "2025-04-28");
+
