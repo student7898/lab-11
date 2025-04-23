@@ -60,11 +60,31 @@ class Store {
     }
 
     findProductByName(name) {
+        let foundProduct = null;
         this.inventory.forEach(product => {
-            if (product.name === name) {
-                return product;
+            if (product.name == name) {
+                foundProduct = product;
+                return;
             }
         });
-        return null;
+        return foundProduct;
     }
 }
+
+// Part 5
+
+let modernDayStore = new Store(
+    [
+        new PerishableProductProperties("Orange", 9.99, 1, "2025-04-22"),
+        new PerishableProductProperties("Grapes", 29.99, 2, "2025-04-22"),
+        new ProductProperties("Cereal", 34.99, 3),
+        new ProductProperties("Burgers", 39.99, 23),
+        new ProductProperties("Candy", 1.99, 99)
+    ]
+);
+
+const oldValue = modernDayStore.getInventoryValue();
+ProductProperties.applyDiscount(modernDayStore.inventory, 15);
+const newValue = modernDayStore.getInventoryValue();
+let orange = modernDayStore.findProductByName("Orange");
+console.log(orange.toString())
