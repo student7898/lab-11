@@ -15,3 +15,19 @@ class ProductProperties {
         return "Product: " + this.name + ", Price: " + this.price + ", Quantity: " + this.quantity;
     }
 }
+
+// Part 2
+
+class PerishableProductProperties extends ProductProperties {
+    constructor(name, price, quantity, expirationDate) {
+        super(name, price, quantity);
+        this.expirationDate = expirationDate;
+    }
+
+    toString() {
+        return super.toString() + ", Expiration Date: " + this.expirationDate;
+    }
+}
+
+let apple = new PerishableProductProperties("Apple", 4.99, 2, "2025-04-22");
+let banana = new PerishableProductProperties("Banana", 8.49, 8, "2025-04-28");
