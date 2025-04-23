@@ -16,7 +16,7 @@ class ProductProperties {
     }
 
     // Part 3
-    
+
     static applyDiscount(products, discount) {
         products.forEach(product => {
             product.price *= (1 - discount / 100);
@@ -40,3 +40,31 @@ class PerishableProductProperties extends ProductProperties {
 let apple = new PerishableProductProperties("Apple", 4.99, 2, "2025-04-22");
 let banana = new PerishableProductProperties("Banana", 8.49, 8, "2025-04-28");
 
+// Part 4
+
+class Store {
+    constructor(inventory) {
+        this.inventory = inventory;
+    }
+
+    addProduct(product) {
+        this.inventory.push(product);
+    }
+
+    getInventoryValue() {
+        let totalValue = 0;
+        this.inventory.forEach(product => {
+            totalValue += product.getTotalValue();
+        });
+        return totalValue;
+    }
+
+    findProductByName(name) {
+        this.inventory.forEach(product => {
+            if (product.name === name) {
+                return product;
+            }
+        });
+        return null;
+    }
+}
